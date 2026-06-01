@@ -6,6 +6,8 @@ const state = {
   token: localStorage.getItem("nhapLieuAuthToken") || "",
   // Thông tin user đang đăng nhập.
   user: JSON.parse(localStorage.getItem("nhapLieuAuthUser") || "null"),
+  // Nhà xe mặc định cuối cùng do mã khách tự điền.
+  lastSuggestedTruck: "",
 };
 
 // Lấy panel đăng nhập.
@@ -139,9 +141,10 @@ function renderCustomerPreview() {
 
   // Chỉ hiện tên khách, không hiện giá để tránh lộ thông tin.
   customerPreview.textContent = customer.TenKH;
-  // Nếu ô nhà xe đang trống và khách có nhà xe mặc định thì tự điền.
-  if (!nhaXe.value && customer.NhaXeMacDinh) {
+  // Nếu khách có nhà xe mặc định thì gợi ý/tự điền vào ô Nhà xe.
+  if (customer.NhaXeMacDinh && (!nhaXe.value || nhaXe.value === state.lastSuggestedTruck)) {
     nhaXe.value = customer.NhaXeMacDinh;
+    state.lastSuggestedTruck = customer.NhaXeMacDinh;
   }
 }
 
