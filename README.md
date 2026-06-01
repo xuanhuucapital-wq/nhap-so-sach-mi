@@ -52,3 +52,13 @@ Functions directory: functions
 ```
 
 Trong phần Environment variables của Cloudflare, thêm đủ các key giống phần cấu hình ở trên. Các giá trị nhạy cảm như `GOOGLE_PRIVATE_KEY` và `APP_AUTH_SECRET` nên để dạng secret.
+
+Nếu deploy bằng Cloudflare Workers, repo đã có `wrangler.jsonc`. Cloudflare cần chạy:
+
+```text
+Build command: npm run build
+Deploy command: npx wrangler deploy
+Root directory: /
+```
+
+Với Workers, thêm các biến trong **Settings -> Variables and secrets** của Worker.
