@@ -1,12 +1,15 @@
 {
   "scripts": {
     "dev": "netlify dev",
-    "build": "echo \"Static app ready\""
+    "build": "echo \"Static app ready\"",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "dependencies": {
     "@netlify/functions": "^3.0.0"
   },
   "devDependencies": {
-    "netlify-cli": "^17.38.1"
+    "netlify-cli": "^17.38.1",
+    "wrangler": "^4.95.0"
   }
 }
